@@ -1,0 +1,37 @@
+{
+  "name": "material/outline.mat",
+  "shader": {
+    "name": "shader/outline.sh"
+  },
+  "textures": {
+    "texture": {
+      "variant": "Fbo",
+      "fields": [
+        {
+          "name": "fbo_selected"
+        },
+        "Depth"
+      ]
+    },
+    "texture_all": {
+      "variant": "Fbo",
+      "fields": [
+        {
+          "name": "fbo_all"
+        },
+        "Depth"
+      ]
+    }
+  },
+  "uniforms": {
+    "resolution": {
+      "variant": "Vec2",
+      "fields": [
+        {
+          "x": 5.6,
+          "y": 1.2
+        }
+      ]
+    }
+  }
+}

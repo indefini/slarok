@@ -1,0 +1,19 @@
+{
+  "name": "material/simple2.mat",
+  "shader": {
+    "name": "shader/simple.sh"
+  },
+  "state": 0,
+  "textures": {
+    "texture": {
+      "variant": "ImageFile",
+      "fields": [
+        {
+          "name": "image/tex_ground.png"
+        }
+      ]
+    }
+  },
+  "uniforms": {
+  }
+}

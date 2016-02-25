@@ -1,0 +1,348 @@
+{
+  "name": "scene/simple.scene",
+  "id": "472ada79-efd8-4c91-80ed-57804f97a10b",
+  "objects": [
+    {
+      "name": "robot",
+      "id": "2d977dae-7d47-419e-8335-1a9fe2cb39a2",
+      "position": {
+        "x": -65.20000000000056,
+        "y": 0.0,
+        "z": -1.0
+      },
+      "orientation": {
+        "variant": "AngleXYZ",
+        "fields": [
+          {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        ]
+      },
+      "scale": {
+        "x": 9.8,
+        "y": 10.0,
+        "z": 9.9
+      },
+      "children": [
+        {
+          "name": "my_child",
+          "id": "212b727d-3fa8-4712-8998-65deec06c091",
+          "position": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "orientation": {
+            "variant": "Quat",
+            "fields": [
+              {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+              }
+            ]
+          },
+          "scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "children": [],
+          "components": [],
+          "comp_data": [],
+          "comp_lua": []
+        }
+      ],
+      "components": [
+        "player_behavior",
+        "armature_animation"
+      ],
+      "comp_data": [
+        {
+          "variant": "Player",
+          "fields": [
+            {
+              "speed": 3.0
+            }
+          ]
+        },
+        {
+          "variant": "ArmaturePath",
+          "fields": [
+            {
+              "name": "armature/robot_armature.arm"
+            }
+          ]
+        },
+        {
+          "variant": "MeshRender",
+          "fields": [
+            {
+              "mesh": "model/robot.mesh",
+              "material": "material/color.mat"
+            }
+          ]
+        }
+      ],
+      "comp_lua": [
+        "empty",
+        "empty"
+      ]
+    },
+    {
+      "name": "skeleton002",
+      "id": "4f08ca14-c83c-4792-9142-45dde59bfbef",
+      "position": {
+        "x": -607.400000000068,
+        "y": 0.00807400000000003,
+        "z": -1.999415
+      },
+      "orientation": {
+        "variant": "AngleXYZ",
+        "fields": [
+          {
+            "x": 1631.699969,
+            "y": 80.599997,
+            "z": -175.29996599997386
+          }
+        ]
+      },
+      "scale": {
+        "x": 0.1,
+        "y": 0.1,
+        "z": 0.1
+      },
+      "children": [],
+      "components": [],
+      "comp_data": [
+        {
+          "variant": "MeshRender",
+          "fields": [
+            {
+              "mesh": "model/skeletonmesh.mesh",
+              "material": "material/simple.mat"
+            }
+          ]
+        }
+      ],
+      "comp_lua": [
+        "lua/chris.lua"
+      ]
+    },
+    {
+      "name": "plane",
+      "id": "88aaa2da-888e-4f33-b1e5-2cd24847c82c",
+      "position": {
+        "x": 184.80000000000427,
+        "y": 0.0,
+        "z": -2000.0
+      },
+      "orientation": {
+        "variant": "AngleXYZ",
+        "fields": [
+          {
+            "x": 1447.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        ]
+      },
+      "scale": {
+        "x": 81.0,
+        "y": 81.0,
+        "z": 81.0
+      },
+      "children": [],
+      "components": [],
+      "comp_data": [
+        {
+          "variant": "MeshRender",
+          "fields": [
+            {
+              "mesh": "model/plane_xy.mesh",
+              "material": "material/simple2.mat"
+            }
+          ]
+        }
+      ],
+      "comp_lua": []
+    },
+    {
+      "name": "camera",
+      "id": "ff632432-da7c-4d25-bd3f-e999f9d3c87a",
+      "position": {
+        "x": 25.0282801709069,
+        "y": 9.129946,
+        "z": 87.7455157570449
+      },
+      "orientation": {
+        "variant": "Quat",
+        "fields": [
+          {
+            "x": -0.01505384696450087,
+            "y": 0.3245368889299487,
+            "z": 0.005165830784550539,
+            "w": 0.9457391974390306
+          }
+        ]
+      },
+      "scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "children": [],
+      "components": [],
+      "comp_data": [],
+      "comp_lua": []
+    },
+    {
+      "name": "flatstuff",
+      "id": "1aa09ecc-51c0-4963-b180-36c02066a73c",
+      "position": {
+        "x": -30.3,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "orientation": {
+        "variant": "Quat",
+        "fields": [
+          {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          }
+        ]
+      },
+      "scale": {
+        "x": 5.0,
+        "y": 5.0,
+        "z": 5.0
+      },
+      "children": [],
+      "components": [
+        "armature_animation"
+      ],
+      "comp_data": [
+        {
+          "variant": "ArmaturePath",
+          "fields": [
+            {
+              "name": "armature/flatstuff.arm"
+            }
+          ]
+        },
+        {
+          "variant": "MeshRender",
+          "fields": [
+            {
+              "mesh": "model/flatstuff.mesh",
+              "material": "material/color.mat"
+            }
+          ]
+        }
+      ],
+      "comp_lua": []
+    },
+    {
+      "name": "couloir",
+      "id": "9bafaf0c-725b-4bce-99f2-bbad75edc010",
+      "position": {
+        "x": -65.20000000000056,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "orientation": {
+        "variant": "AngleXYZ",
+        "fields": [
+          {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        ]
+      },
+      "scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "children": [],
+      "components": [],
+      "comp_data": [],
+      "comp_lua": []
+    }
+  ],
+  "camera": {
+    "data": {
+      "fovy": 0.33772114,
+      "fovy_base": 0.392699,
+      "near": 1.0,
+      "far": 10000.0,
+      "aspect": 2.772093023255814,
+      "width": 1192.0,
+      "height": 430.0,
+      "height_base": 500,
+      "yaw": -0.7848980000000016,
+      "pitch": -0.1057230000000123,
+      "roll": 0.0,
+      "clear_color": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "projection": "Perspective",
+      "origin": {
+        "x": 100.0,
+        "y": -15.0,
+        "z": 42.144328
+      },
+      "local_offset": {
+        "x": -100.0,
+        "y": 20.0,
+        "z": 100.0
+      },
+      "center": {
+        "x": 0.0,
+        "y": 5.0,
+        "z": 0.0
+      }
+    },
+    "object": {
+      "name": "camera",
+      "id": "ff632432-da7c-4d25-bd3f-e999f9d3c87a",
+      "position": {
+        "x": 25.0282801709069,
+        "y": 9.129946,
+        "z": 87.7455157570449
+      },
+      "orientation": {
+        "variant": "Quat",
+        "fields": [
+          {
+            "x": -0.01505384696450087,
+            "y": 0.3245368889299487,
+            "z": 0.005165830784550539,
+            "w": 0.9457391974390306
+          }
+        ]
+      },
+      "scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "children": [],
+      "components": [],
+      "comp_data": [],
+      "comp_lua": []
+    },
+    "id": "58a28ac7-01ee-4cf6-9552-bb9760a21cea",
+    "object_id": "ff632432-da7c-4d25-bd3f-e999f9d3c87a"
+  }
+}

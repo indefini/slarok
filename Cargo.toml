@@ -1,0 +1,11 @@
+[package]
+name = "slarok"
+version = "0.1.0"
+authors = ["Christophe Sadoine <chris@indefini.org>"]
+
+[dependencies]
+glutin= "0.4.8"
+
+[dependencies.dormin]
+git= "https://github.com/indefini/dormin.git"
+

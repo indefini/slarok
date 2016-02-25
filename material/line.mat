@@ -1,0 +1,16 @@
+{
+  "name": "material/line.mat",
+  "shader": {
+    "name": "shader/line.sh"
+  },
+  "textures": {
+  },
+  "uniforms": {
+    "size_fixed": {
+      "variant": "Int",
+      "fields": [
+        0
+      ]
+    }
+  }
+}

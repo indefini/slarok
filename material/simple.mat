@@ -1,0 +1,17 @@
+{
+  "name": "material/simple.mat",
+  "shader": {
+    "name": "shader/simple.sh"
+  },
+  "textures": {
+    "texture": {
+      "variant": "ImageFile",
+      "fields": [
+        {
+          "name": "image/base_skeleton_col.png"
+        }
+      ]
+    }
+  },
+  "uniforms": {}
+}
