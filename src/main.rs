@@ -7,36 +7,10 @@ extern crate dormin;
 use std::rc::Rc;
 
 fn main() {
-    let builder = glutin::WindowBuilder::new()
-        .with_dimensions(300,200)
-        .with_title("test".to_owned())
-        .with_gl(glutin::GlRequest::Specific(glutin::Api::OpenGlEs, (2, 0)))
-        ;
-    //let window = glutin::Window::new().unwrap();
-    let window = builder.build().unwrap();
-    unsafe { window.make_current() };
-
-    /*
-    unsafe {
-        gl::load_with(|symbol| window.get_proc_address(symbol) as *const _);
-
-        gl::ClearColor(0.0, 1.0, 0.0, 1.0);
-    }
-
-    for event in window.wait_events() {
-        //unsafe { gl::Clear(gl::COLOR_BUFFER_BIT) };
-        window.swap_buffers();
-
-        match event {
-            glutin::Event::Closed => break,
-            _ => ()
-        }
-    }
-    */
 
     let factory = dormin::factory::Factory::new();
     let res = dormin::resource::ResourceGroup::new();
-    let mut scene = dormin::scene::Scene::new_from_file("scene/simple.scene", &res);
+    let mut scene = dormin::scene::Scene::new_from_file("scene/aaa.scene", &res);
     let camera = if let Some(ref c) = scene.camera {
         c.clone()
     }
@@ -44,22 +18,53 @@ fn main() {
         return;
     };
 
-    let mut render = box dormin::render::GameRender::new(camera, Rc::new(res));
+    {
+        //let mut cm = component::Manager::new();
+        let mut cm = dormin::component::manager::COMP_MGR.lock().unwrap();
+        cm.register_component("player_behavior", dormin::component::player::player_new);
+        cm.register_component(
+            "armature_animation",
+            dormin::component::armature_animation::new);
+    }
 
-    render.resize(300,200);
+    scene.init_components(&res);
 
+    let w = camera.borrow().data.width as u32;
+    let h = camera.borrow().data.height as u32;
+
+    let builder = glutin::WindowBuilder::new()
+        .with_dimensions(w,h)
+        .with_title("test".to_owned())
+        .with_gl(glutin::GlRequest::Specific(glutin::Api::OpenGlEs, (2, 0)))
+        ;
+    //let window = glutin::Window::new().unwrap();
+    let window = builder.build().unwrap();
+    unsafe { window.make_current() };
+
+
+    let mut render = box dormin::render::GameRender::new(camera.clone(), Rc::new(res));
+
+    render.resize(w as i32,h as i32);
+
+    unsafe { dormin::render::cypher_init_simple(); }
     render.init();
 
     let mut quit = false;
     while !quit {
-
         scene.update(0.01f64);
+        unsafe {dormin::render::cypher_draw_start(w as i32, h as i32); }
+
         render.draw(&scene.objects);
-        //here draw something
+        unsafe {dormin::render::cypher_draw_end(); }
         window.swap_buffers();
         for event in window.poll_events() {
             match event {
                 glutin::Event::Closed => quit = true,// break,
+                glutin::Event::KeyboardInput(a,b,c) => {
+                    camera.borrow_mut().pan(
+                        &dormin::vec::Vec3::new(0f64,0f64,-10f64));
+                    println!("moving camera");
+                }
             _ => ()
             }
         }

@@ -1,3 +1,5 @@
+#version 100
+precision highp float;
 uniform vec4 color;
 uniform sampler2D texture;
 varying vec2 f_texcoord;

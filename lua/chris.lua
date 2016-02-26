@@ -15,7 +15,7 @@ x,y,z = object.get_pos(yop)
 --yop.position.x = yop.position.x + 0.1
 yosh = vec3.new(-0.1,0,0)
 yosh2 = vec3.new(17,8,9)
---yop.position = yop.position + yosh
+yop.position = yop.position + yosh
 --yosh.x = 2
 --yop.position = yosh + yosh2
 print("yosh : ", yosh.x)
