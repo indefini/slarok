@@ -49,24 +49,26 @@ fn main() {
     unsafe { dormin::render::cypher_init_simple(); }
     render.init();
 
+    let mut input = dormin::input::Input::new();
+
     let mut quit = false;
     while !quit {
-        scene.update(0.01f64);
+        input.clear();
+        for event in window.poll_events() {
+            match event {
+                glutin::Event::Closed => quit = true,// break,
+                glutin::Event::KeyboardInput(a,b,c) => {
+                    input.add_key(b);
+                }
+            _ => ()
+            }
+        }
+
+        scene.update(0.01f64, &input);
         unsafe {dormin::render::cypher_draw_start(w as i32, h as i32); }
 
         render.draw(&scene.objects);
         unsafe {dormin::render::cypher_draw_end(); }
         window.swap_buffers();
-        for event in window.poll_events() {
-            match event {
-                glutin::Event::Closed => quit = true,// break,
-                glutin::Event::KeyboardInput(a,b,c) => {
-                    camera.borrow_mut().pan(
-                        &dormin::vec::Vec3::new(0f64,0f64,-10f64));
-                    println!("moving camera");
-                }
-            _ => ()
-            }
-        }
     }
 }
