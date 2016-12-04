@@ -5,10 +5,10 @@ extern crate dormin;
 //extern crate libc;
 
 use std::rc::Rc;
+use std::sync::{Arc, Mutex};
 
 fn main() {
 
-    let factory = dormin::factory::Factory::new();
     let res = dormin::resource::ResourceGroup::new();
     let mut scene = dormin::scene::Scene::new_from_file("scene/aaa.scene", &res);
     let camera = if let Some(ref c) = scene.camera {
@@ -50,6 +50,7 @@ fn main() {
     render.init();
 
     let mut input = dormin::input::Input::new();
+    let load = Arc::new(Mutex::new(0));
 
     let mut quit = false;
     while !quit {
@@ -67,7 +68,7 @@ fn main() {
         scene.update(0.01f64, &input);
         unsafe {dormin::render::cypher_draw_start(w as i32, h as i32); }
 
-        render.draw(&scene.objects);
+        render.draw(&scene.objects, load.clone());
         unsafe {dormin::render::cypher_draw_end(); }
         window.swap_buffers();
     }
